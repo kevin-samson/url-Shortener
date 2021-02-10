@@ -1,0 +1,59 @@
+{% extends "render.html" %}
+{% block content %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"><br><br></div>
+            <div class="col-md-12">
+                <br>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"><br></div>
+            <div class="col-md-12">
+                <br>
+                <h3 class="text-center">
+                    Shorten Your URL !
+                </h3>
+                <br>
+            </div>
+        </div>
+    </div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.website.label(class="form-control-label") }}
+            {% if form.website.errors %}
+                {{ form.website(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.website.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.website(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.slug.label(class="form-control-label") }}
+            {% if form.slug.errors %}
+                {{ form.slug(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.slug.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.slug(class="form-control") }}
+            {% endif %}
+            <small>Extension is optional (Creates random if not specified)</small>
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+{% endblock content %}
